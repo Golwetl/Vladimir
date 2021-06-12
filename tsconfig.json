@@ -1,26 +1,47 @@
 {
+  // https://engineering.zalando.com/posts/2019/02/typescript-best-practices.html
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "importHelpers": true,
     "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "strictBindCallApply": false,
     "module": "esnext",
     "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "sourceMap": true,
+    "declaration": true,
+    "removeComments": true,
+    "downlevelIteration": true,
+    "rootDir": ".",
+    "baseUrl": ".",
+    "outDir": "dist",
+    "types": ["node"],
+    "typeRoots": ["./node_modules/@types", "./css.modules.d.ts"]
   },
-  "include": [
-    "src"
+  "paths": {
+    "*": ["node_modules/*"]
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }
