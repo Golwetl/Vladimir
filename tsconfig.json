@@ -35,17 +35,13 @@
     "baseUrl": ".",
     "outDir": "dist",
     "types": ["node"],
-    "typeRoots": ["./node_modules/@types", "./types"]
+    "typeRoots": ["./node_modules/@types", "./css.modules.d.ts"]
   },
-
-  // declare how TypeScript should resolve an import
   "paths": {
-    "*": ["node_modules/*"],
+    "*": ["node_modules/*"]
   },
-
-  "include": ["src", "css.modules.d.ts", ".eslintrc.js"],
   "exclude": [
-    "**/node_modules",
+    "node_modules",
     "dist"
   ]
 }

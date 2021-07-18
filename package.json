@@ -1,32 +1,85 @@
 {
-  "name": "React_Components",
-  "version": "1.0.0",
+  "name": "Vladimir",
+  "description": "An example repo",
   "private": true,
-  "dependencies": {
-    "classnames": "2.2.6",
-    "eslint-config-airbnb": "^17.1.0",
-    "prop-types": "15.6.2",
-    "react-dom": "16.6.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.5",
-    "react-select": "^4.3.1"
-  },
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.jsx"
+    "clean": "rimraf dist",
+    "prebuild": "yarn clean",
+    "build": "rollup -c",
+    "test": "jest",
+    "types:check": "tsc"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-image": "^2.0.6",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/pluginutils": "^4.1.0",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^14.14.35",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-stylelint": "^13.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^5.2.0",
+    "jest": "^27.0.4",
+    "lint-staged": "^10.5.4",
+    "node-sass": "^6.0.0",
+    "postcss": "^8.2.8",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-loader": "^5.3.0",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-safe-parser": "^5.0.2",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.51.0",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "stylelint": "^13.12.0",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-config-standard-scss": "^1.1.0",
+    "stylelint-scss": "^3.19.0",
+    "typescript": "^4.2.3"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "lint-staged": {
+    "packages/**/src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ],
+    "packages/**/*.{css,scss}": [
+      "prettier --write",
+      "stylelint --fix --config ./.stylelintrc",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn types:check"
+    }
   },
   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "eslint-plugin-react": "^7.11.1",
-    "react": "^16.14.0",
-    "webpack-cli": "^4.7.2"
-  }
+    "defaults"
+  ]
 }
